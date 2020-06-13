@@ -1,4 +1,4 @@
-import 'package:disenoava/src/pages/headers_page.dart';
+import 'package:disenoava/src/pages/animaciones_page.dart';
 import  'package:flutter/material.dart';
 
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños App',
-      home:HeadersPage(),
+      home:AnimacionesPage(),
 
     );
   }

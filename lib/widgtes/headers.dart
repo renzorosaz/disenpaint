@@ -276,11 +276,76 @@ class HeaderPico extends StatelessWidget {
       path.lineTo(size.width, 0);
        
 
-      path.moveTo(0, size.height);
-     path.lineTo(0, size.height*0.7);
-     path.quadraticBezierTo(size.width*0.2,size.height*0.65 , size.width*0.5, size.height*0.7 );
-     path.quadraticBezierTo(size.width*0.7,size.height*0.75 , size.width, size.height*0.70 );
-      path.lineTo(size.width, size.height);
+      
+
+      canvas.drawPath(path, paint);
+
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    throw true;
+  }
+
+      
+      }
+
+      class HeaderWaveGradient extends StatelessWidget {
+  
+
+      @override
+      Widget build(BuildContext context) {
+
+        return Container(
+        height: double.infinity,
+          width: double.infinity,   
+      // color: Color(0xff615AAB),
+        child: CustomPaint(
+          painter:_HeaderWavePainterGradient(),
+          
+          ),
+        );
+        
+      }
+}
+
+  class _HeaderWavePainterGradient extends CustomPainter{
+  @override
+  void paint(Canvas canvas, Size size) {
+
+      final Rect rect = new Rect.fromCircle(
+        center : Offset(0.0,55.0),
+        radius: 180
+      );
+      final Gradient gradiente = new LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors:<Color>[
+          Colors.lightGreen,
+          Colors.green,
+          Colors.teal,
+        ],
+        stops: [
+          0.2,
+          0.5,
+          1.0, 
+        ]
+      );
+
+      final paint= new Paint()..shader = gradiente.createShader(rect);
+
+      //propiedades
+      paint.style= PaintingStyle.fill;// .fill
+      paint.strokeWidth = 20;
+
+      final path= Path();
+
+
+      path.lineTo(0,size.height*0.25 );     
+      path.quadraticBezierTo(size.width*0.2,size.height*0.30 , size.width*0.5, size.height*0.25 );
+      path.quadraticBezierTo(size.width*0.7,size.height*0.20 , size.width, size.height*0.25 );
+      path.lineTo(size.width, 0);
+       
 
       canvas.drawPath(path, paint);
 
