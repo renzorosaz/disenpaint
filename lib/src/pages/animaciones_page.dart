@@ -27,6 +27,7 @@ class _CuadradoAnimadoState extends State<CuadradoAnimado>  with SingleTickerPro
   AnimationController controller;
   Animation<double> rotacion;
   Animation<double> opacidad;
+   Animation<double> opacidadOut;
   Animation<double> moverDerecha;
   Animation<double> agrandar;
 
@@ -44,7 +45,11 @@ class _CuadradoAnimadoState extends State<CuadradoAnimado>  with SingleTickerPro
       CurvedAnimation(parent: controller, curve: Interval(0, 0.25, curve:  Curves.easeOut))
     );
 
-    moverDerecha= Tween(begin: 0.0 , end:100.0).animate(
+     opacidadOut = Tween(begin:0.0, end: 1.0).animate(
+      CurvedAnimation(parent: controller, curve: Interval(0.75, 1.0, curve:  Curves.easeInOutQuart))
+    );
+
+    moverDerecha= Tween(begin: 0.0 , end:150.0).animate(
       CurvedAnimation(parent: controller, curve: Curves.easeOut)
     );
 
@@ -55,9 +60,9 @@ class _CuadradoAnimadoState extends State<CuadradoAnimado>  with SingleTickerPro
 
     controller.addListener(() {
       
-      print('Status: ${controller.status}');
+      /* print('Status: ${controller.status}'); */
       if(controller.status == AnimationStatus.completed){
-        controller.reset();
+        controller.repeat();
       } /* else  if (controller.status == AnimationStatus.dismissed){
         controller.forward();
         
@@ -91,12 +96,15 @@ class _CuadradoAnimadoState extends State<CuadradoAnimado>  with SingleTickerPro
      child: _Rectangulo(),
      builder: (BuildContext context, Widget childRectangulo) {
 
+      print('Rotacion: ${rotacion.status}');
+      print('Opacidad: ${opacidad.status}'); 
+
        return Transform.translate(
          offset: Offset(moverDerecha.value,0),
            child: Transform.rotate(
            angle: rotacion.value,
            child: Opacity(
-             opacity: opacidad.value,
+             opacity: opacidad.value - opacidadOut.value,
              child: Transform.scale(
                scale: agrandar.value,
                child: childRectangulo
