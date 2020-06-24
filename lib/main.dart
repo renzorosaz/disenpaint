@@ -1,8 +1,9 @@
 
-/* import 'package:disenoava/src/pages/graficas_circulares_page.dart'; */
-import 'package:disenoava/src/pages/slideshow_page.dart';
+import 'package:disenoava/src/pages/pinterest_page.dart';
 import  'package:flutter/material.dart';
 
+/* import 'src/pages/slideshow_page.dart';
+ */
 
 void main() =>runApp(MyApp());
 class MyApp extends StatelessWidget {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños App',
-      home: SlideShowPage()
+      home: PinterestPage()
 
     );
   }
