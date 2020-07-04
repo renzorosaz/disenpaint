@@ -17,21 +17,23 @@ class PinterestMenu extends StatelessWidget {
   final Color backgroundColor;
   final Color activeColor;
   final Color inactiveColor;
+  final List<PinterestButton> items;
   
   PinterestMenu({
     this.mostrar=true,
     this.backgroundColor= Colors.white,
     this.activeColor= Colors.black,
     this.inactiveColor = Colors.blueGrey,
+    this.items
   });
 
 
-  final List<PinterestButton> items= [
-    PinterestButton(icon: Icons.pie_chart,onPressed: (){print('machucando ');}),
-    PinterestButton(icon: Icons.search,onPressed: (){print('buscar ');}),
+  /* final List<PinterestButton> items= [
+     PinterestButton(icon: Icons.pie_chart,onPressed: (){print('machucando ');}),
+     PinterestButton(icon: Icons.search,onPressed: (){print('buscar ');}),
      PinterestButton(icon: Icons.notification_important,onPressed: (){print('notificacion ');}),
      PinterestButton(icon: Icons.supervised_user_circle,onPressed: (){print('supervisor ');})
-  ];
+  ]; */
 
   @override
   Widget build(BuildContext context) {
